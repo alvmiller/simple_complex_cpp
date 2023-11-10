@@ -7,31 +7,31 @@ private:
     double imaginary;
 
 public:
-    constexpr Complex(double r = 0.0, double i = 0.0) :
+    constexpr Complex(double r = 0.0, double i = 0.0) noexcept :
         real(r), imaginary(i) { }
 
-    constexpr double get_real() const {
+    constexpr double get_real() const noexcept {
         return real;
     }
 
-    constexpr double get_imaginary() const {
+    constexpr double get_imaginary() const noexcept {
         return imaginary;
     }
 
-    constexpr Complex& operator+= (Complex rhs) { 
+    constexpr Complex& operator+= (Complex rhs) noexcept { 
         real += rhs.real;
         imaginary += rhs.imaginary;
         return *this;
     }
 };
 
-constexpr Complex operator+ (Complex lhs, Complex rhs)
+constexpr Complex operator+ (Complex lhs, Complex rhs) noexcept 
 {
     lhs += rhs;
     return lhs;
 }
 
-constexpr Complex operator""_i (long double imaginary)
+constexpr Complex operator""_i (long double imaginary) noexcept 
 {
     return Complex(0.0, imaginary);
 }
